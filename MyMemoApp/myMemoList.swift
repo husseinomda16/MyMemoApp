@@ -10,7 +10,7 @@ import UIKit
 
 class myMemoList: UITableViewController {
 
-    let arrayData = ["eat","drink","meet"]
+    var arrayData = ["eat","drink","meet"]
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -37,6 +37,25 @@ class myMemoList: UITableViewController {
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
+    
+    //MARK:- add New Item To My Memo List
+    
+    //TODO: add Item Button
+    @IBAction func addBtnPressed(_ sender: Any) {
+        var textField = UITextField()
+        let alert = UIAlertController(title: "add new memo", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "add item", style: .default) { (action) in
+            self.arrayData.append(textField.text!)
+            self.tableView.reloadData()
+        }
+        alert.addAction(action)
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Enter Memo Name"
+            textField = alertTextField
+            
+        }
+        present(alert, animated: true, completion: nil)
+    }
+    
 }
 

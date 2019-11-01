@@ -32,7 +32,14 @@
                             <outlet property="delegate" destination="xoI-qo-QvK" id="4Te-7g-j4h"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Memo List" id="kAq-1H-gss"/>
+                    <navigationItem key="navigationItem" title="My Memo List" id="kAq-1H-gss">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="kjt-Ul-N1g">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addBtnPressed:" destination="xoI-qo-QvK" id="vaY-mv-fkE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3QA-ri-P09" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
