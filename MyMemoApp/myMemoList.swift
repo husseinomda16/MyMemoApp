@@ -10,10 +10,16 @@ import UIKit
 
 class myMemoList: UITableViewController {
 
+    //Declare instance
+    var defaults = UserDefaults()
+    
     var arrayData = ["eat","drink","meet"]
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        if let items = defaults.array(forKey: "memoArray") as? [String]{
+            arrayData = items
+        }
     }
 
     //MARK: - Table View Data Source
@@ -46,6 +52,7 @@ class myMemoList: UITableViewController {
         let alert = UIAlertController(title: "add new memo", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "add item", style: .default) { (action) in
             self.arrayData.append(textField.text!)
+            self.defaults.set(self.arrayData , forKey : "memoArray")
             self.tableView.reloadData()
         }
         alert.addAction(action)
